@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Admin Dahboard</title>
+</head>
+<body>
+
+	<h1>Welcome to Admin Dashboard</h1>
+
+	<h2>All Users</h2>
+
+	<a href="{{ url_for('admin.another_page') }}">Click Here </a> to go to another page
+
+	{% if all_users %}
+
+		<table>
+			<tr>
+				<thead>
+					<td>SN</td>
+					<td>Username</td>
+					<td>Login IP</td>
+					<td>last Login</td>
+					<td>Action</td>
+				</thead>
+			</tr>
+
+			<tbody>
+				{% for users in all_users %}
+
+					<tr>
+						<td>{{ loop.index }}</td>
+						<td>{{ users['username'] }}</td>
+						<td>{{ users['login_ip'] }}</td>
+						<td>{{ users['last_login'] }}</td>
+						<td><span><a href="">Edit</a></span></td>
+					</tr>
+
+				{% endfor %}
+			</tbody>
+		</table>
+
+	{% else %}
+
+		<center>
+			<h2 style="color: red">No Users Found</h2>
+		</center>
+
+	{% endif %}
+
+</body>
+</html>
